@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="search.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="head-container">   
+            <h2 style="font-size: 20px; text-align: left; padding-left: 20px; margin-bottom: 15px;" id="title">Google</h2> 
+            <form action="index.html">
+                <button>Google Search</button>
+            </form>
+            <form action="image.html">
+                <button>Image Search</button>
+            </form>
+            <form action="#">
+                <button>Advanced Search</button>
+            </form>
+        </div>
+        <h2 id="advanced-title">Advanced Search</h2>
+        <hr style="border: solid 1px black">
+        <form class="advanced-search-container" action="https://google.com/search">
+            <h3 id="advanced-subtitle">Find pages with...</h3>
+            <div class="block">
+                <span class="advanced-text">all these words:</span>
+            </div>
+            <div class="block">
+                <input class="advanced-search-bar" type="text" name="as_q" autofocus>
+            </div>
+            <br>
+            <div class="block">
+                <span class="advanced-text">this exact word or phrase:</span>
+            </div>
+            <div class="block">
+                <input class="advanced-search-bar" type="text" name="as_epq">
+            </div>
+            <br>
+            <div class="block">
+                <span class="advanced-text">any of these words:</span>
+            </div>
+            <div class="block">
+                <input class="advanced-search-bar" type="text" name="as_oq">
+            </div>
+            <br>
+            <div class="block">
+                <span class="advanced-text">none of these words:</span>
+            </div>
+            <div class="block">
+                <input class="advanced-search-bar" type="text" name="as_eq" autofocus>
+                <br>
+                <button id="advanced-search-button" type="submit">Advanced Search</button>
+            </div>
+        </form>
+    </body>
+</html>

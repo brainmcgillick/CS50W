@@ -1,0 +1,125 @@
+.head-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.head-container button {
+    background-color: rgb(28, 29, 29);
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border: 0;
+}
+
+.head-container button:hover {
+    background-color: rgb(45, 46, 46);
+}
+
+#title-container {
+    display: flex;
+}
+
+#title {
+    margin-bottom: 0;
+    text-align: center;
+    flex-grow: 1;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80px;
+}
+
+#subtitle {
+    font-size: 20px;
+    color: blue;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(28, 29, 29);
+}
+
+.search-container {
+    flex-grow: 2;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#search-bar {
+    border-radius: 10px;
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    color: white;
+    border: white 1px solid;
+    background-color: rgb(28, 29, 29);
+    font-size: 15px;
+}
+
+#search-bar:hover {
+    background-color: rgb(45, 46, 46);
+}
+
+#search-button {
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 0;
+    width: 150px;
+    font-size: 16px;
+    background-color: rgb(45, 46, 46);
+    color: white;
+    padding: 10px;
+}
+
+#advanced-title {
+    color: rgb(244, 129, 87);
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 20px;
+}
+
+#advanced-subtitle {
+    color: white;
+    padding-left: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#advanced-search-container {
+    display: table;
+}
+
+.block {
+    display: table-cell;
+    width: 50%;
+}
+
+.advanced-text {
+    color: grey;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+}
+
+.advanced-search-bar {
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-sizing: border-box;
+    color: white;
+    border: grey 1px solid;
+    background-color: rgb(28, 29, 29);
+    font-size: 15px;
+}
+
+#advanced-search-button {
+    background-color: rgb(89, 158, 233);
+    padding: 10px;
+    float: right;
+    margin-top: 15px;
+}
