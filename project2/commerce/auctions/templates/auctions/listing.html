@@ -1,0 +1,109 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div style="margin-left: 30px;">
+    <h2>{{ listing.title }}</h2>
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 15px; border-top: solid 1px grey;">
+        <div style="margin-right: 15px;">
+            {% if listing.category %}
+            <h6><strong>Category:</strong> {{ listing.category }}</h6>
+            {% endif %}
+            <p><strong>Description:</strong> {{ listing.description|linebreaks }}</p>
+            <p><strong>Starting Bid:</strong> €{{ listing.price }}</p>
+            <p><strong>Time Created:</strong> {{ listing.time }}</p>
+        </div>
+        <div style="padding-right: 30px; margin-top: 10px;">
+            <img src="{{ listing.image }}" width = 150px>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+        <ul class="nav">
+            {% if status == 'open' %}
+                <li class="nav-item">
+                    <form action="{% url 'listing' listing.id %}" method="POST">
+                        {% csrf_token %}
+                        {% if watching %}
+                            <button type="submit" name="watchlist" value="remove">Remove from Watchlist</button>
+                        {% else %}
+                            <button type="submit" name="watchlist" value="add">Add to Watchlist</button>
+                        {% endif %}
+                    </form>
+                </li>
+                <li class="nav-item" style="padding-left: 30px;">
+                    <form action="{% url 'listing' listing.id %}" method="POST">
+                        {% csrf_token %}
+                        {% if owner %}
+                            <button type="submit" name="close" value="close">Close Auction</button>
+                        {% else %}
+                            €: <input type="number" name="amount" min="{{ min_bid }}"  max="9999" step="0.01" placeholder="Bid:">
+                            <button type="submit" name="bid" value="bid">Place Bid</button>
+                        {% endif %}
+                    </form>
+                </li>
+            {% endif %}
+            {% if status == 'closed' and owner %}
+            <li>
+                <form action="{% url 'listing' listing.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" name="open" value="open">Re-Open Auction</button>
+                </form>
+            </li>
+            {% endif %}
+        </ul>
+        {% if status == 'closed' %}
+            {% if user == winner %}
+                <div class="alert alert-success" role="alert" style="margin-top: 10px;">
+                    Auction Closed! Congratulations {{ winner.username }}! You are the Winner!
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    Auction Closed!
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+    <div style="border-top: solid 1px grey;  width: 100%; margin-top: 15px;">
+        <h4 style="margin-top: 10px;">Placed Bids</h4>
+        <table class="table">
+            <tr>
+                <th>User</th>
+                <th>Bid</th>
+                <th>Time Created</th>
+            </tr>
+            {% for bid in bids %}
+            <tr>
+                <td>{{ bid.user }}</td>
+                <td>€{{ bid.amount }}</td>                
+                <td>{{ bid.time }}</td>
+            <tr>
+            {% endfor %}                    
+        </table>
+    </div>
+    <div>
+        {% if user.is_authenticated %}
+            <form action="{% url 'listing' listing.id %}" method="POST" style="display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 10px;">
+                {% csrf_token %}
+                <textarea name="text" placeholder="Leave a Comment:" style="width: 300px;"></textarea>
+                <button type="submit" name="comment" value="comment">Post</button>
+            </form>
+        {% endif %}
+    </div>
+    <div style="border-top: solid 1px grey;  width: 100%; margin-top: 15px;">
+        <h4 style="margin-top: 10px;">Comments</h4>
+        <table class="table">
+            <tr>
+                <th>User</th>
+                <th>Comment</th>
+                <th>Time Created</th>
+            </tr>
+            {% for comment in comments %}
+            <tr>
+                <td>{{ comment.user }}</td>
+                <td>{{ comment.text }}</td>                
+                <td>{{ comment.time }}</td>
+            <tr>
+            {% endfor %}                    
+        </table>
+    </div>
+</div>
+{% endblock %}

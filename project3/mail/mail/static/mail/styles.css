@@ -1,0 +1,26 @@
+textarea {
+    min-height: 400px;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
+.email {
+    border: 1px solid gray;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px
+}
+
+.email.read {
+    background-color: gray;
+}
+
+.email.unread {
+    background-color: white;
+}
+
+.reply {
+    margin-left: 10px;
+}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid row no-gutters">
+        <div class="col-6 d-none d-md-block">
+            <img src="{% static 'navigation/landing.jpg' %}" class="w-100" id="landing">
+        </div>
+        <div class="col" id="sidebar">
+            <div class="logo-container d-flex justify-content-center align-items-center">
+                <div class="card text-center logo">
+                    <img src="{% static 'navigation/logo.jpg' %}" class="card-img-top w-50 mx-auto">
+                    <div class="card-body">
+                        <h3 class="card-title">Welcome to BreathSpace!</h3>
+                        <p class="card-text">Scroll down to get to know us better!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card text-center mb-4">
+                <img src="{% static 'navigation/landing-teacher.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">Experienced Teachers</h4>
+                    <p class="card-text">Our experienced teachers are here to guide you with care and precision, whether you're new to yoga or have years of practice. With diverse backgrounds in various styles, we offer a well-rounded approach to help you deepen your practice and find balance on and off the mat. We're excited to support you on your yoga journey.</p>
+                </div>
+            </div>
+            <div class="card text-center mb-4">
+                <img src="{% static 'navigation/landing-levels.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">Tailored to All Levels</h4>
+                    <p class="card-text">Our classes are designed to accommodate all levels, from beginners to advanced practitioners. Whether you're just starting out or looking to deepen your practice, we offer modifications and challenges to meet your needs. We’re committed to creating a welcoming environment where everyone can grow at their own pace.</p>
+                </div>
+            </div>
+            <div class="card text-center mb-4">
+                <img src="{% static 'navigation/landing-location.jpg' %}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">City Centre Location</h4>
+                    <p class="card-text">Our studio is conveniently located in the heart of the city, making it easy for you to escape the hustle and bustle and find your calm. With easy access to public transport and plenty of nearby amenities, it’s the perfect spot to unwind and recharge, whether you're on your way to work or enjoying a break in the city.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

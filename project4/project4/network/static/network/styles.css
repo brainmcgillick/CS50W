@@ -1,0 +1,57 @@
+.navbar-nav {
+    flex-direction: row;
+}
+
+.navbar-nav .nav-link {
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+#all-posts {
+    padding-left: 5px;
+}
+
+#new-post-form {
+    padding-left: 15px;
+}
+
+#new-post-text {
+    width: 95%;
+    height: 100px;
+}
+
+#new-post-submit {
+    display: block;
+}
+
+#posts {
+    margin-top: 10px;
+}
+
+.post {
+    margin-left: 15px;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.post p {
+    margin-bottom: 5px;
+}
+
+#timestamp, #likes-count {
+    color: gray;
+    font-size: 12px;
+}
+
+.pagination #page-current {
+    pointer-events: none !important;
+}
+
+.post textarea {
+    width: 400px;
+}
+
+#save-edit-button {
+    display: block;
+}

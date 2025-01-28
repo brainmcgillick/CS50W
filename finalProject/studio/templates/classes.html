@@ -1,0 +1,110 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid row">
+        <div class="col order-last order-sm-first">
+            <div class="card w-auto mx-2 my-2">
+                <h3 class="mx-2 pt-2">Search Class Schedule:</h3>
+                <div class="m-2">
+                    <label for="search_date" class="form-label">Choose Date:</label>
+                    <input type="date" class="form-control d-inline w-50" id="search_date" name="date" autocomplete="off">
+                    <button type="button" class="btn btn-primary mx-auto d-inline-block" id="search_button">Search Classes</button>
+                </div>
+            </div>
+            <div class="table-responsive card mx-2 my-3">
+                <h4 class="mx-2 py-2" id="table_heading">Class Schedule:</h4>
+                <table class="table w-auto mx-2 table-hover table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Class</th>
+                            <th scope="col">Instructor</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Capacity</th>
+                            {% if user.user_type == "student" %}
+                                <th scope="col">Book</th>
+                            {% else %}
+                                <th scope="col">Cancel</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody id="classlist">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% if user.user_type == "teacher" %}
+        <div class="col-sm-4 order-first order-sm-last">
+            <div class="card p-3 mx-2 my-2 w-auto">
+                <h4 class="card-title">Create New Class:</h4>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <label for="date" class="form-label">Choose Date:</label>
+                        <input type="date" class="form-control d-inline w-50" id="date" name="date" autocomplete="off">
+                    </div>
+                    <div class="mb-2">
+                        <label for="time" class="form-label">Choose Time:</label>
+                        <input type="time" list="times" class="form-control d-inline w-50" id="time" name="time" step="1800" autocomplete="off">
+                        <datalist id="times">
+                            <option value="08:00"></option>                        
+                            <option value="08:30"></option>                        
+                            <option value="09:00"></option>                        
+                            <option value="09:30"></option>                        
+                            <option value="10:00"></option>                        
+                            <option value="10:30"></option>                        
+                            <option value="11:00"></option>                        
+                            <option value="11:30"></option>                        
+                            <option value="12:00"></option>                        
+                            <option value="12:30"></option>                        
+                            <option value="13:00"></option>                        
+                            <option value="13:30"></option>                        
+                            <option value="14:00"></option>                        
+                            <option value="14:30"></option>                        
+                            <option value="15:00"></option>                        
+                            <option value="15:30"></option>                        
+                            <option value="16:00"></option>                        
+                            <option value="16:30"></option>                        
+                            <option value="17:00"></option>                        
+                            <option value="17:30"></option>                        
+                            <option value="18:00"></option>                        
+                            <option value="18:30"></option>                        
+                            <option value="19:00"></option>                        
+                        </datalist>
+                    </div>
+                    <div class="mb-2">
+                        <label for="style" class="form-label">Style:</label>
+                        <select class="form-control d-inline w-50" id="style" name="style" autocomplete="off">
+                            <option value="" selected disabled>--Select--</option>
+                            <option value="Vinyasa">Vinyasa</option>
+                            <option value="Yin">Yin</option>
+                            <option value="Hot">Hot</option>
+                            <option value="Hatha">Hatha</option>
+                            <option value="Ashtanga">Ashtanga</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="instructor" class="form-label">Instructor:</label>
+                        <input type="text" class="form-control w-50 d-inline" id="instructor" name="instructor" autocomplete="off">
+                    </div>
+                    <input type="submit" value="Create Class" class="btn btn-primary mx-auto d-inline-block" placeholder="Post" autocomplete="off">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-warning mt-2">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    var userType = "{{ user.user_type|escapejs }}";
+</script>
+<script src="{% static 'navigation/classes.js' %}"></script>
+{% endblock %}

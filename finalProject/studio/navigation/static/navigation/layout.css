@@ -1,0 +1,55 @@
+.navbar-custom {
+    background-color: whitesmoke !important;
+    border-bottom: 1px solid gray;
+}
+
+#logo {
+    margin-right: 10px;
+}
+
+#footer {
+    background-color: whitesmoke;
+    border-top: 1px solid gray;
+}
+
+.custom-border {
+    border-top: 4px solid white;
+}
+
+.card {
+    box-shadow: -5px 5px 5px gray;
+}
+
+#landing {
+    position: sticky;
+    top: 70px;
+    height: 100vh;
+    object-fit: cover;
+    object-position: left;
+}
+
+.logo-container {
+    height: calc(100vh - 60px);
+}
+
+.logo {
+    padding: 5vh 0 5vh 0;
+}
+
+.row {
+    --bs-gutter-x: 0;
+  }
+
+#sidebar {
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+#about {
+    padding-left: 2vw;
+    border-left: 0.1rem dashed gray;
+}
+
+.login-card {
+    background-color: whitesmoke;
+}

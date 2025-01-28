@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+<div class="container-fluid row no-gutters">
+    <div class="col-6 d-none d-md-block">
+        <img src="{% static 'dashboard/login.jpg' %}" class="w-100" id="landing">
+    </div>
+    <div class="col my-2 d-flex flex-column justify-content-center align-items-center" id="sidebar">
+        <div class="card w-100">
+            <img src="{% static 'navigation/logo.jpg' %}" class="card-img-top mx-auto" style="width: 20%;">
+            <div class="card-body text-center">
+                <h3 class="card-title">Welcome to BreathSpace!</h3>
+                <p class="card-text">Register Below!</p>
+            </div>
+            <div class="login-card p-4">
+                {% if message %}
+                <div class="alert alert-warning py-0 px-2">
+                    <p>{{ message }}</p>
+                </div>
+                {% endif %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3 w-100">
+                        <label for="email" class="form-label">Email address:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" autocomplete="email">
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" autocomplete="current-password">
+                    </div>
+                    <div class="mb-3 w-100">
+                        <label for="confirmation" class="form-label">Confirm Password:</label>
+                        <input type="password" class="form-control" id="confirmation" name="confirmation" autocomplete="off">
+                    </div>
+                    <div class="mb-3 w-100">
+                        <p class="form-label d-inline">User Type:</p>
+                        <div class="mx-2 d-inline-block">
+                            <input type="radio" class="btn-check" name="usertype" id="option1" value="student" autocomplete="off" checked>
+                            <label class="btn btn-secondary" for="option1">Student</label>
+                            <input type="radio" class="btn-check" name="usertype" id="option2" value="teacher" autocomplete="off">
+                            <label class="btn btn-secondary" for="option2">Teacher</label>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-primary mx-auto" value="Register">
+                    </div>
+                </form>
+            </div>
+            <p class="mt-2 mx-2">Already have an account? <a href="login">Log in here!</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

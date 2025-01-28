@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid row">
+        <div class="order-1">
+            {% if user.user_type == "student" %}
+                <h3 class="mx-2">Your Student Dashboard</h3>
+            {% else %}
+                <h3 class="mx-2">Your Teacher Dashboard</h3>
+            {% endif %}
+        </div>
+        <div class="col-sm order-last order-sm-2">
+            <div class="table-responsive card mx-2 mb-4">
+                <h4 class="mx-2 py-2">Upcoming Classes:</h4>
+                <table class="table w-auto mx-2 table-hover table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Class</th>
+                            {% if user.user_type == "student" %}
+                                <th scope="col">Instructor</th>
+                            {% endif %}
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody id="upcoming">
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive card mx-2 mb-4">
+                <h4 class="mx-2 py-2">Class History:</h4>
+                <table class="table w-auto mx-2 table-hover table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Class</th>
+                            {% if user.user_type == "student" %}
+                                <th scope="col">Instructor</th>
+                            {% endif %}
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history">
+                    </tbody>
+                </table>
+                <nav class="mx-2">
+                    <ul class="pagination">
+                        <li class="page-item" id="previous">
+                            <button class="page-link">Previous</button>
+                        </li>
+                        <li class="page-item">
+                            <button class="page-link" id="next" href="#">Next</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {% if user.user_type == "student" %}
+            <div class="col-sm-4 order-2 order-sm-last">
+                <div class="card p-3 mx-2 mb-4 w-auto">
+                    <h4 class="card-title">Stats:</h4>
+                    <p class="card-text" id="attended">No. of Classes Attended:</p>
+                    <p class="card-text" id="fav_class">Favourite Class Type:</p>
+                    <p class="card-text" id="fav_instructor">Favourite Instructor:</p>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-sm-4 order-2 order-sm-last">
+                <div class="card p-3 mx-2 mb-4 w-auto">
+                    <h4 class="card-title">Stats:</h4>
+                    <p class="card-text" id="taught">No. of Classes Taught:</p>
+                    <p class="card-text" id="fav_class">Favourite Class Type:</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block script %}
+<script>
+    var userType = "{{ user.user_type|escapejs }}";
+    var numPages = "{{ num_pages|escapejs }}";
+</script>
+<script src="{% static 'navigation/dashboard.js' %}"></script>
+{% endblock %}

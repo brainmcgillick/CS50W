@@ -1,0 +1,28 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <div id="all-posts">
+            <!--Form to create new post-->
+            <h4>Following</h4>
+            <div id="posts">
+
+            </div>
+            <ul class="pagination">
+                <li id="page-back" class="page-item page-link">Previous</li>
+                <li id="page-current" class="page-item page-link">Page 1 of {{ num_pages }}</li>
+                <li id="page-forward" class="page-item page-link">Next</a></li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    <meta name="csrfmiddlewaretoken" content="{{ csrf_token }}">
+    <script>
+        var num_pages = {{ num_pages }};
+        var viewer = "{{ request.user.username|escapejs }}";
+    </script>
+    <script src="{% static 'network/following.js' %}"></script>
+{% endblock %}

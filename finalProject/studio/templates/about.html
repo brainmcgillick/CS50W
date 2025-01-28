@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid row no-gutters">
+        <div class="col-6 d-none d-md-block">
+            <img src="{% static 'navigation/about.jpg' %}" class="w-100" id="landing">
+        </div>
+        <div class="col mt-2" id="sidebar">
+            <div id="about">
+                <h3 style="text-align: center;">About Us</h3>
+                <p>Welcome to BreathSpace, where every breath takes you closer to balance, peace, and vitality. We are a community-driven yoga studio dedicated to nurturing your body, mind, and spirit through the transformative power of yoga.</p>
+                <p>Founded by Bernie Waters, a passionate yoga practitioner with over 15 years of experience, BreathSpace blends traditional yoga wisdom with modern techniques to create a holistic practice for all levels. After completing extensive training in various yoga styles in India, Bernie returned to share his knowledge and create a space where people can truly reconnect with themselves.</p>
+                <p>Bernie’s journey began with the study of Hatha and Vinyasa yoga, and over the years, he expanded his expertise to include Ashtanga, Kundalini, and Restorative yoga. His training took him to the heart of India, where he studied under renowned masters, delving deeply into both the physical and spiritual aspects of yoga. Bernie is also a certified yoga therapist, trained to guide students with personalized practices to address specific physical and mental health needs.</p>
+                <p>At BreathSpace, we offer a variety of classes designed to meet the diverse needs of our community. Whether you’re looking for a challenging flow, a deeply restorative session, or a meditative practice, we have something for everyone. Our philosophy is rooted in mindfulness, self-compassion, and the belief that yoga is for every body.</p>
+                <p>We invite you to step into BreathSpace and experience a yoga practice that’s about more than just poses — it’s about cultivating inner peace, discovering your true self, and finding harmony in every breath. Join us, and let’s breathe, stretch, and grow together.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
